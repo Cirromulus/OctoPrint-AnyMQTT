@@ -4,30 +4,30 @@
 ### Do not forget to adjust the following variables to your own plugin.
 
 # The plugin's identifier, has to be unique
-plugin_identifier = "tasmota_mqtt"
+plugin_identifier = "any_mqtt"
 
 # The plugin's python package, should be "octoprint_<plugin identifier>", has to be unique
-plugin_package = "octoprint_tasmota_mqtt"
+plugin_package = "octoprint_any_mqtt"
 
 # The plugin's human readable name. Can be overwritten within OctoPrint's internal data via __plugin_name__ in the
 # plugin module
-plugin_name = "OctoPrint-TasmotaMQTT"
+plugin_name = "OctoPrint-AnyMQTT"
 
 # The plugin's version. Can be overwritten within OctoPrint's internal data via __plugin_version__ in the plugin module
 plugin_version = "0.3.1"
 
 # The plugin's description. Can be overwritten within OctoPrint's internal data via __plugin_description__ in the plugin
 # module
-plugin_description = """Plugin to control Tasmota devices via MQTT protocol."""
+plugin_description = """Plugin to control Any devices via MQTT protocol."""
 
 # The plugin's author. Can be overwritten within OctoPrint's internal data via __plugin_author__ in the plugin module
-plugin_author = "jneilliii"
+plugin_author = "cirromulus"
 
 # The plugin's author's mail address.
-plugin_author_email = "jneilliii+github@gmail.com"
+plugin_author_email = "accounts@popofreunde.club"
 
 # The plugin's homepage URL. Can be overwritten within OctoPrint's internal data via __plugin_url__ in the plugin module
-plugin_url = "https://github.com/jneilliii/OctoPrint-TasmotaMQTT"
+plugin_url = "https://github.com/Cirromulus/OctoPrint-AnyMQTT"
 
 # The plugin's license. Can be overwritten within OctoPrint's internal data via __plugin_license__ in the plugin module
 plugin_license = "AGPLv3"
