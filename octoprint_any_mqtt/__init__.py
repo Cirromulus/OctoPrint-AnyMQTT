@@ -8,7 +8,7 @@ import time
 import os
 import re
 
-class TasmotaMQTTPlugin(octoprint.plugin.SettingsPlugin,
+class AnyMQTTPlugin(octoprint.plugin.SettingsPlugin,
                          octoprint.plugin.AssetPlugin,
                          octoprint.plugin.TemplatePlugin,
 						 octoprint.plugin.StartupPlugin,
