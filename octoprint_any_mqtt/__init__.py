@@ -43,8 +43,7 @@ class AnyMQTTPlugin(octoprint.plugin.SettingsPlugin,
                 on_string="1",
                 off_string="0",
                 command_topic="switch",
-                status_topic="status/switch")],
-			full_topic_pattern='%topic%/%prefix%/'
+                status_topic="status/switch")]
 		)
 		
 	def get_settings_version(self):
@@ -65,8 +64,8 @@ class AnyMQTTPlugin(octoprint.plugin.SettingsPlugin,
 			if "mqtt_subscribe" in helpers:
 				self.mqtt_subscribe = helpers["mqtt_subscribe"]
 				for relay in self._settings.get(["arrRelays"]):
-					self._logger.info(self.generate_mqtt_full_topic(relay, "stat"))
-					self.mqtt_subscribe(self.generate_mqtt_full_topic(relay, "stat"), self._on_mqtt_subscription, kwargs=dict(top=relay["topic"],relayN=relay["relayN"]))
+					self._logger.info("Subscribing to " + self.generate_mqtt_full_topic(relay, relay["status_topic"]))
+					self.mqtt_subscribe(self.generate_mqtt_full_topic(relay, relay["status_topic"]), self._on_mqtt_subscription, kwargs=dict(top=relay["topic"],relayN=relay["relayN"]))
 			if "mqtt_unsubscribe" in helpers:
 				self.mqtt_unsubscribe = helpers["mqtt_unsubscribe"]
 		else:
@@ -95,7 +94,7 @@ class AnyMQTTPlugin(octoprint.plugin.SettingsPlugin,
 			try:
 				self.mqtt_unsubscribe(self._on_mqtt_subscription)
 				for relay in self._settings.get(["arrRelays"]):
-					self.mqtt_subscribe(self.generate_mqtt_full_topic(relay, "stat"), self._on_mqtt_subscription, kwargs=dict(top=relay["topic"],relayN=relay["relayN"]))
+					self.mqtt_subscribe(self.generate_mqtt_full_topic(relay, relay["status_topic"]), self._on_mqtt_subscription, kwargs=dict(top=relay["topic"],relayN=relay["relayN"]))
 			except:
 				self._plugin_manager.send_plugin_message(self._identifier, dict(noMQTT=True))
 
@@ -208,9 +207,7 @@ class AnyMQTTPlugin(octoprint.plugin.SettingsPlugin,
 	##~~ Utility functions
 	
 	def generate_mqtt_full_topic(self, relay, prefix):
-		full_topic = re.sub(r'%topic%', relay["topic"], self._settings.get(["full_topic_pattern"]))
-		full_topic = re.sub(r'%prefix%', prefix, full_topic)
-		#full_topic = full_topic + "POWER" + relay["relayN"]
+		full_topic = relay["topic"] + prefix
 		return full_topic
 			
 	##~~ WizardPlugin mixin
