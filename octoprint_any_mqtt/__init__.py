@@ -178,7 +178,7 @@ class TasmotaMQTTPlugin(octoprint.plugin.SettingsPlugin,
 	
 	def gcode_turn_off(self, relay):
 		if relay["warnPrinting"] and self._printer.is_printing():
-			self._logger.info("Not powering self._settings.get(["off_string"]) %s | %s because printer is printing." % relay["topic"],relay["relayN"])
+			self._logger.info("Not powering off %s | %s because printer is printing." % relay["topic"],relay["relayN"])
 		else:
 			self.turn_off(relay)
 	
