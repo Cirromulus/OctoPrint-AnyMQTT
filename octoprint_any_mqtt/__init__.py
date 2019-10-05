@@ -39,12 +39,12 @@ class TasmotaMQTTPlugin(octoprint.plugin.SettingsPlugin,
                 sysCmdOnDelay=0,
                 sysCmdOff=False,
                 sysCmdRunOff="",
-                sysCmdOffDelay=0),
+                sysCmdOffDelay=0,
                 on_string="1",
                 off_string="0",
                 command_topic="switch",
-                status_topic="status/switch"],
-			full_topic_pattern='%topic%/%prefix%/',
+                status_topic="status/switch")],
+			full_topic_pattern='%topic%/%prefix%/'
 		)
 		
 	def get_settings_version(self):
